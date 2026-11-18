@@ -5,3 +5,17 @@
 *{
   font-family: "Outfit", sans-serif;
 }
+
+@layer base{
+  button {
+    @apply cursor-pointer;
+  }
+  input:not([type='checkbox']){
+    @apply outline-none focus:ring border border-gray-300 focus:ring-blue-400
+    focus:border-blue-400 rounded-lg;
+  }
+  textarea{
+    @apply outline-none focus:ring border border-gray-300 focus:ring-blue-400
+    focus:border-blue-400 rounded-lg resize-none;
+  }
+}

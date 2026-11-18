@@ -37,8 +37,8 @@ function Hero() {
                                 Get Started
                             </Link>
                             <Link
-                                // to="/app?state=login"
-                                to="/login"
+                                to="/app?state=login"
+                                // to="/login"
                                 onClick={() => setMenuOpen(false)}
                                 className='px-6 py-2.5 border border-neutral-300 text-neutral-700 hover:bg-[#31adcd] hover:border-[#31adcd] hover:text-white active:scale-95 rounded-full text-sm transition'
                             >
