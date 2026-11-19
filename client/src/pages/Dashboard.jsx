@@ -171,7 +171,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { Plus, UploadCloud, FileText, Pencil, Trash2, X, Calendar } from 'lucide-react';
-import { dummyResumeData } from '../assets/asset';
+import { dummyResumeData } from '../assets/assets';
 import { useNavigate } from 'react-router-dom';
 
 function Dashboard() {
@@ -220,7 +220,7 @@ function Dashboard() {
     event.preventDefault();
     setAllResumes((prev) =>
       prev.map((item) =>
-        item.id === editResumeId
+        item._id === editResumeId
           ? { ...item, title: title.trim(), updatedAt: new Date().toISOString() }
           : item
       )
@@ -231,7 +231,7 @@ function Dashboard() {
   const deleteResume = (resumeId) => {
     const isConfirmed = window.confirm('Are you sure you want to delete this resume?');
     if (isConfirmed) {
-      setAllResumes((prev) => prev.filter((item) => item.id !== resumeId));
+      setAllResumes((prev) => prev.filter((item) => item._id !== resumeId));
     }
   };
 
@@ -304,8 +304,8 @@ function Dashboard() {
                   key={item.id || index}
                   role="button"
                   tabIndex={0}
-                  onClick={() => navigate(`/app/builder/${item.id}`)}
-                  onKeyDown={(e) => e.key === 'Enter' && navigate(`/app/builder/${item.id}`)}
+                  onClick={() => navigate(`/app/builder/${item._id}`)}
+                  onKeyDown={(e) => e.key === 'Enter' && navigate(`/app/builder/${item._id}`)}
                   className="relative h-52 flex flex-col items-center justify-between p-4 rounded-xl border bg-white group hover:-translate-y-1 hover:shadow-lg transition-all duration-200 cursor-pointer overflow-hidden"
                   style={{
                     background: `linear-gradient(145deg, #ffffff 30%, ${baseColor}15 100%)`,
@@ -321,7 +321,7 @@ function Dashboard() {
                       type="button"
                       title="Rename resume"
                       onClick={() => {
-                        setEditResumeId(item.id);
+                        setEditResumeId(item._id);
                         setTitle(item.title);
                       }}
                       className="p-1.5 rounded-lg bg-white/80 hover:bg-white text-slate-600 hover:text-[#31adcd] shadow-xs transition-colors cursor-pointer"
@@ -331,7 +331,7 @@ function Dashboard() {
                     <button
                       type="button"
                       title="Delete resume"
-                      onClick={() => deleteResume(item.id)}
+                      onClick={() => deleteResume(item._id)}
                       className="p-1.5 rounded-lg bg-white/80 hover:bg-red-50 text-slate-600 hover:text-red-600 shadow-xs transition-colors cursor-pointer"
                     >
                       <Trash2 className="size-4" />
